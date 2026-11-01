@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Cristalino Cúbico</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            max-width: 750px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #38bdf8;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 12px;
+        }
+
+        h2 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        strong {
+            color: #38bdf8;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2);
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 8px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        .qr-section {
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .qr-section h2 {
+            justify-content: center;
+            color: #38bdf8;
+        }
+
+        .qr-section p {
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .qr-box {
+            background: #ffffff;
+            padding: 12px;
+            display: inline-block;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .qr-box img {
+            width: 160px;
+            height: 160px;
+            display: block;
+        }
+
+        /* ESTILOS DEL MODAL (VENTANA FLOTANTE) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid #38bdf8;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            padding: 24px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #f8fafc;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 16px 0;
+            border: 1px solid #334155;
+        }
+
+        .modal-title {
+            color: #38bdf8;
+            font-size: 1.4rem;
+        }
+
+        .modal-desc {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de Cristalización Cúbico (Isométrico)</h1>
+
+        <h2>🔷 Características Principales</h2>
+        <p>
+            El sistema cúbico se distingue por tener <strong>tres ejes de igual longitud</strong> que se intersectan en ángulos de <strong>90 grados</strong>. Es el sistema de mayor simetría dentro de la cristalografía.
+        </p>
+
+        <h2>💎 Minerales Representativos</h2>
+        <div class="card-grid">
+            <div class="card" onclick="openModal('Halita', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Halite-267885.jpg/640px-Halite-267885.jpg', 'La Halita es la sal común o de roca (NaCl). Sus cristales forman cubos perfectos transparentes o translúcidos debido a la disposición perfecta de los iones de Sodio y Cloro en 90°.')">
+                <h3>Halita</h3>
+                <p>Forma cubos perfectos.</p>
+                <div class="click-hint">Ver foto 🔍</div>
+            </div>
+
+            <div class="card" onclick="openModal('Pirita', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Pyrite_cube_-_Navajún%2C_La_Rioja%2C_Spain.jpg/640px-Pyrite_cube_-_Navajún%2C_La_Rioja%2C_Spain.jpg', 'Conocida como el oro de los tontos (FeS2), la pirita cristaliza en cubos perfectos con un brillo metálico dorado y caras estriadas características del sistema isométrico.')">
+                <h3>Pirita</h3>
+                <p>Cubos con caras estriadas.</p>
+                <div class="click-hint">Ver foto 🔍</div>
+            </div>
+
+            <div class="card" onclick="openModal('Granate', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Garnet_Almandine_Isère.jpg/640px-Garnet_Almandine_Isère.jpg', 'Aunque pertenece al sistema cúbico, el granate suele presentarse habitualmente en forma de dodecaedros rómbicos o trapezoedros, manteniendo la simetría triaxial idéntica.')">
+                <h3>Granate</h3>
+                <p>Comúnmente en dodecaedros.</p>
+                <div class="click-hint">Ver foto 🔍</div>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <h2>📱 Acceso Rápido</h2>
+            <p>Escanea este código QR para ingresar directamente al proyecto:</p>
+            <div class="qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://maribelcondori-coder.github.io/sistema-cristalino/" alt="Código QR del sitio">
+            </div>
+        </div>
+    </div>
+
+    <!-- VENTANA MODAL FLOTANTE -->
+    <div id="infoModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <img id="modalImg" class="modal-img" src="" alt="Mineral">
+            <p id="modalDesc" class="modal-desc"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(nombre, imagenUrl, descripcion) {
+            document.getElementById('modalTitle').innerText = nombre;
+            document.getElementById('modalImg').src = imagenUrl;
+            document.getElementById('modalDesc').innerText = descripcion;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
