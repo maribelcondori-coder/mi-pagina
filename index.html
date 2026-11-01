@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Cristalino Cúbico</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            max-width: 750px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #38bdf8;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 12px;
+        }
+
+        h2 {
+            color: #f1f5f9;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        strong {
+            color: #38bdf8;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 16px;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .qr-section {
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .qr-section h2 {
+            justify-content: center;
+            color: #38bdf8;
+        }
+
+        .qr-section p {
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .qr-box {
+            background: #ffffff;
+            padding: 12px;
+            display: inline-block;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .qr-box img {
+            width: 160px;
+            height: 160px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de Cristalización Cúbico (Isométrico)</h1>
+
+        <h2>🔷 Características Principales</h2>
+        <p>
+            El sistema cúbico se distingue por tener <strong>tres ejes de igual longitud</strong> que se intersectan en ángulos de <strong>90 grados</strong>. Es el sistema de mayor simetría dentro de la cristalografía.
+        </p>
+
+        <h2>💎 Minerales Representativos</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Halita</h3>
+                <p>Forma cubos perfectos.</p>
+            </div>
+            <div class="card">
+                <h3>Pirita</h3>
+                <p>Cubos con caras estriadas.</p>
+            </div>
+            <div class="card">
+                <h3>Granate</h3>
+                <p>Comúnmente en dodecaedros.</p>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <h2>📱 Acceso Rápido</h2>
+            <p>Escanea este código QR para ingresar directamente al proyecto:</p>
+            <div class="qr-box">
+                <!-- Genera un QR dinámico directo a tu web de GitHub -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://maribelcondori-coder.github.io/sistema-cristalino/" alt="Código QR del sitio">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
